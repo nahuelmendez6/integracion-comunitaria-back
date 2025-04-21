@@ -17,9 +17,16 @@ public class PostulationController {
     private PostulationRepository postulationRepository;
 
     // Obtener todas las postulaciones
-    @GetMapping
-    public List<Postulation> getALlPostulations() {
-        return postulationRepository.findAll();
+    @GetMapping("/by-petition/{idPetition}")
+    public List<Postulation> getByPetition(@PathVariable Long idPetition) {
+        return postulationRepository.findByPetition(idPetition);
     }
+
+    // Obtener solo una postulacion
+    @GetMapping("/{id}")
+    public Optional<Postulation> getPostulationByID(@PathVariable Long id) {
+        return postulationRepository.findById(id);
+    }
+
 
 }
