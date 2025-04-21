@@ -28,5 +28,11 @@ public class PostulationController {
         return postulationRepository.findById(id);
     }
 
+    // Crear una nueva postulacion
+    @PostMapping
+    public Postulation createPostulation(@RequestBody Postulation postulation) {
+        return postulationRepository.save(postulation);
+    }
+
 
 }
