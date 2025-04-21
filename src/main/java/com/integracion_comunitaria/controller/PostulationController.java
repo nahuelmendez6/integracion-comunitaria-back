@@ -34,5 +34,11 @@ public class PostulationController {
         return postulationRepository.save(postulation);
     }
 
+    // Eliminar una postulacion por ID
+    @DeleteMapping("/{id}")
+    public void deletePostulation(@PathVariable Long id) {
+        postulationRepository.deleteById(id);
+    }
+
 
 }
