@@ -17,7 +17,7 @@ public class PostulationService {
     private PostulationRepository repository;
 
     public List<Postulation> getByPetition(Long idPetition) {
-        return repository.findByPetition(idPetition);
+        return repository.findByIdPetition(idPetition);
     }
 
     public Optional<Postulation> getByID(Long id) {

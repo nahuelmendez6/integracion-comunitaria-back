@@ -8,6 +8,6 @@ import com.integracion_comunitaria.model.Postulation;
 
 public interface PostulationRepository extends JpaRepository<Postulation, Long> {
 
-    List<Postulation> findByPetition(Long idPetition);
+    List<Postulation> findByIdPetition(Long idPetition);
 
 }
