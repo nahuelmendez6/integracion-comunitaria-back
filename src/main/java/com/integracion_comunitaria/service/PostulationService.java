@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.integracion_comunitaria.repository.PostulationRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class PostulationService {
 
@@ -39,6 +41,21 @@ public class PostulationService {
 
     public void delete(Long id) {
         repository.deleteById(id);
+    }
+
+    @Transactional
+    public void updateWinner(Long id, String winner) {
+        repository.updateWinnerById(id, winner);
+    }
+
+    @Transactional
+    public void updateIdState(Long id, Long idState) {
+        repository.updateIdStateById(id, idState);
+    }
+
+    @Transactional
+    public void updateCurrent(Long id, String current) {
+        repository.updateCurrentById(id, current);
     }
 
 }

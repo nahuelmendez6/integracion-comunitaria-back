@@ -4,6 +4,7 @@ import com.integracion_comunitaria.model.Postulation;
 import com.integracion_comunitaria.service.PostulationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -39,6 +40,24 @@ public class PostulationController {
     @DeleteMapping("/{id}")
     public void deletePostulation(@PathVariable Long id) {
         postulationService.delete(id);
+    }
+
+    @PatchMapping("/{id}/winner")
+    public ResponseEntity<String> updateWinner(@PathVariable Long id, @RequestBody String winner) {
+        postulationService.updateWinner(id, winner);
+        return ResponseEntity.ok("Campo 'winner' actualizado.");
+    }
+
+    @PatchMapping("/{id}/state")
+    public ResponseEntity<String> updateIdState(@PathVariable Long id, @RequestBody Long idState) {
+        postulationService.updateIdState(id, idState);
+        return ResponseEntity.ok("Campo 'idState' actualizado.");
+    }
+
+    @PatchMapping("/{id}/current")
+    public ResponseEntity<String> updateCurrent(@PathVariable Long id, @RequestBody String current) {
+        postulationService.updateCurrent(id, current);
+        return ResponseEntity.ok("Campo 'current' actualizado.");
     }
 
 
