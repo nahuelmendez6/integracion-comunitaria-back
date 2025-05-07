@@ -34,7 +34,9 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
 
     boolean existsByIdPetitionAndIdProvider(Long idPetition, Long idProvider);
 
-    boolean costIsPositive(Long cost);
+    @Query("SELECT CASE WHEN p.cost > 0 THEN true ELSE false END FROM Postulation p WHERE p.id = :id")
+    boolean costIsPositive(@Param("id") Long id);
+
     
     @Modifying
     @Query("UPDATE Postulation p SET p.winner = :winner WHERE p.idPostulation = :id")
