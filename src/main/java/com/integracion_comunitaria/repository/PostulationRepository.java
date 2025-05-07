@@ -10,4 +10,7 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
 
     List<Postulation> findByIdPetition(Long idPetition);
 
+    boolean existsByIdPetitionAndIdProvider(Long idPetition, Long idProvider);
+    
+
 }

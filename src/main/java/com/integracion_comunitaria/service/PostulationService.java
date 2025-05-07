@@ -25,6 +25,15 @@ public class PostulationService {
     }
 
     public Postulation save(Postulation postulation) {
+
+        boolean exists = repository.existsByIdPetitionAndIdProvider(
+            postulation.getIdPetition(), postulation.getIdProvider()    
+        );
+
+        if (exists) {
+            throw new IllegalArgumentException("Ya existe una postulacion de este proveedor para esta peticion");
+        }
+
         return repository.save(postulation);
     }
 
