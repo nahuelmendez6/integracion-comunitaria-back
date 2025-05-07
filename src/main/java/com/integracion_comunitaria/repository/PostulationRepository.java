@@ -11,10 +11,26 @@ import com.integracion_comunitaria.model.Postulation;
 
 import jakarta.transaction.Transactional;
 
+/**
+ * Repositorio JPA para la entidad Postulation.
+ * Proporciona métodos para acceder y modificar datos relacionados con postulaciones.
+ */
+
 @Transactional
 public interface PostulationRepository extends JpaRepository<Postulation, Long> {
 
+
+    /**
+     * Obtiene una lista de postulaciones asociadas a una petición específica.
+     *
+     * @param idPetition ID de la petición.
+     * @return Lista de postulaciones correspondientes.
+     */
+
     List<Postulation> findByIdPetition(Long idPetition);
+
+    
+
 
     boolean existsByIdPetitionAndIdProvider(Long idPetition, Long idProvider);
     
