@@ -1,7 +1,8 @@
 package com.integracion_comunitaria.controller;
 
 import com.integracion_comunitaria.model.Postulation;
-import com.integracion_comunitaria.repository.PostulationRepository;
+import com.integracion_comunitaria.service.PostulationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,30 +15,30 @@ import java.util.Optional;
 public class PostulationController {
 
     @Autowired
-    private PostulationRepository postulationRepository;
+    private PostulationService postulationService;
 
     // Obtener todas las postulaciones
     @GetMapping("/by-petition/{idPetition}")
     public List<Postulation> getByPetition(@PathVariable Long idPetition) {
-        return postulationRepository.findByPetition(idPetition);
+        return postulationService.getByPetition(idPetition);
     }
 
     // Obtener solo una postulacion
     @GetMapping("/{id}")
     public Optional<Postulation> getPostulationByID(@PathVariable Long id) {
-        return postulationRepository.findById(id);
+        return postulationService.getByID(id);
     }
 
     // Crear una nueva postulacion
     @PostMapping
     public Postulation createPostulation(@RequestBody Postulation postulation) {
-        return postulationRepository.save(postulation);
+        return postulationService.save(postulation);
     }
 
     // Eliminar una postulacion por ID
     @DeleteMapping("/{id}")
     public void deletePostulation(@PathVariable Long id) {
-        postulationRepository.deleteById(id);
+        postulationService.delete(id);
     }
 
 
