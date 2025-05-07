@@ -33,6 +33,8 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
 
 
     boolean existsByIdPetitionAndIdProvider(Long idPetition, Long idProvider);
+
+    boolean costIsPositive(Long cost);
     
     @Modifying
     @Query("UPDATE Postulation p SET p.winner = :winner WHERE p.idPostulation = :id")

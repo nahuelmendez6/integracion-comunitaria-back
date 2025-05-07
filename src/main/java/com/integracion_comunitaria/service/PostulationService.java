@@ -52,11 +52,15 @@ public class PostulationService {
     public Postulation save(Postulation postulation) {
 
         boolean exists = repository.existsByIdPetitionAndIdProvider(
-            postulation.getIdPetition(), postulation.getIdProvider()    
+            postulation.getIdPetition(), postulation.getIdProvider()
         );
+
+        boolean costIsPositive = repository.costIsPositive(postulation.getCost());
 
         if (exists) {
             throw new IllegalArgumentException("Ya existe una postulacion de este proveedor para esta peticion");
+        } else if (!costIsPositive) {
+            throw new IllegalArgumentException("El costo de la postulacion debe ser positivo");
         }
 
         return repository.save(postulation);
