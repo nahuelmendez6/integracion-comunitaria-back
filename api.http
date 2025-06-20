@@ -1,0 +1,59 @@
+### Obtener todas las postulaciones por ID de petición
+GET http://localhost:8080/api/postulations/by-petition/101
+Accept: application/json
+
+###
+
+### Obtener una postulación por ID
+GET http://localhost:8080/api/postulations/1
+Accept: application/json
+
+###
+
+### Crear una nueva postulación
+POST http://localhost:8080/api/postulations
+Content-Type: application/json
+
+{
+  "idPetition": 101,
+  "idProvider": 202,
+  "proposal": "Ofrezco un servicio completo con materiales incluidos.",
+  "cost": 150000,
+  "idState": 1,
+  "current": "activa",
+  "winner": "0",
+  "idUserCreate": 1,
+  "idUserUpdate": 1,
+  "dateCreate": "2025-05-07T10:00:00Z",
+  "dateUpdate": "2025-05-07T10:00:00Z",
+  "state": "pendiente"
+}
+
+###
+
+### Actualizar solo el campo 'winner'
+PATCH http://localhost:8080/api/postulations/1/winner
+Content-Type: application/json
+
+"1"
+
+###
+
+### Actualizar solo el campo 'idState'
+PATCH http://localhost:8080/api/postulations/1/state
+Content-Type: application/json
+
+2
+
+###
+
+### Actualizar solo el campo 'current'
+PATCH http://localhost:8080/api/postulations/1/current
+Content-Type: application/json
+
+"finalizada"
+
+###
+
+### Eliminar una postulación
+DELETE http://localhost:8080/api/postulations/1
