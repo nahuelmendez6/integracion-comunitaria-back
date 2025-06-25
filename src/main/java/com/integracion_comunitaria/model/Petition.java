@@ -18,112 +18,58 @@ public class Petition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_petition")
-    private Long id_petition;
+    private Long idPetition;
 
     @Column(name = "id_type_petition")
-    private Long id_type_petition;
+    private Long idTypePetition;
 
     @Column(name  = "description")
     private String description;
 
     @Column(name = "date_since")
-    private Date date_since;
+    private Date dateSince;
 
     @Column(name = "date_until")
-    private Date date_until;
+    private Date dateUntil;
 
-    /**
-     * ID del usuario que creó la postulación.
-     */
     @Column(name="id_user_create")
     private Long idUserCreate;
 
-    /**
-     * ID del usuario que actualizó la postulación por última vez.
-     */
     @Column(name="id_user_update")
     private Long idUserUpdate;
 
     @Column(name = "id_customer")
-    private Long id_customer;
+    private Long idCustomer;
 
     @Column(name = "id_state")
-    private Long id_state;
+    private Long idState;
 
-    public Long getId_petition() {
-        return id_petition;
-    }
-
-    public void setId_petition(Long id_petition) {
-        this.id_petition = id_petition;
-    }
-
-    public Long getId_type_petition() {
-        return id_type_petition;
-    }
-
-    public void setId_type_petition(Long id_type_petition) {
-        this.id_type_petition = id_type_petition;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getDate_since() {
-        return date_since;
-    }
-
-    public void setDate_since(Date date_since) {
-        this.date_since = date_since;
-    }
-
-    public Date getDate_until() {
-        return date_until;
-    }
-
-    public void setDate_until(Date date_until) {
-        this.date_until = date_until;
-    }
-
-    public Long getIdUserCreate() {
-        return idUserCreate;
-    }
-
-    public void setIdUserCreate(Long idUserCreate) {
-        this.idUserCreate = idUserCreate;
-    }
-
-    public Long getIdUserUpdate() {
-        return idUserUpdate;
-    }
-
-    public void setIdUserUpdate(Long idUserUpdate) {
-        this.idUserUpdate = idUserUpdate;
-    }
-
-    public Long getId_customer() {
-        return id_customer;
-    }
-
-    public void setId_customer(Long id_customer) {
-        this.id_customer = id_customer;
-    }
-
-    public Long getId_state() {
-        return id_state;
-    }
-
-    public void setId_state(Long id_state) {
-        this.id_state = id_state;
-    }
-
+    // Getters y setters con camelCase
     
+    public Long getIdPetition() { return idPetition; }
+    public void setIdPetition(Long idPetition) { this.idPetition = idPetition; }
 
+    public Long getIdTypePetition() { return idTypePetition; }
+    public void setIdTypePetition(Long idTypePetition) { this.idTypePetition = idTypePetition; }
 
-    
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public Date getDateSince() { return dateSince; }
+    public void setDateSince(Date dateSince) { this.dateSince = dateSince; }
+
+    public Date getDateUntil() { return dateUntil; }
+    public void setDateUntil(Date dateUntil) { this.dateUntil = dateUntil; }
+
+    public Long getIdUserCreate() { return idUserCreate; }
+    public void setIdUserCreate(Long idUserCreate) { this.idUserCreate = idUserCreate; }
+
+    public Long getIdUserUpdate() { return idUserUpdate; }
+    public void setIdUserUpdate(Long idUserUpdate) { this.idUserUpdate = idUserUpdate; }
+
+    public Long getIdCustomer() { return idCustomer; }
+    public void setIdCustomer(Long idCustomer) { this.idCustomer = idCustomer; }
+
+    public Long getIdState() { return idState; }
+    public void setIdState(Long idState) { this.idState = idState; }
 }

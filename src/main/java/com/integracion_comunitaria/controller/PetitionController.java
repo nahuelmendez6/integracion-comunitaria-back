@@ -22,4 +22,12 @@ public class PetitionController {
         return petitionRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Petition> getById(@PathVariable("id") Integer id) {
+        Optional<Petition> petition = petitionRepository.findById(id);
+        return petition.map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build());
+    }
+
+
 }

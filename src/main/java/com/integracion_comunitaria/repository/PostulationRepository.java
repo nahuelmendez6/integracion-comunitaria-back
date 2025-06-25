@@ -27,15 +27,18 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
      * @return Lista de postulaciones correspondientes.
      */
 
-    List<Postulation> findByIdPetition(Long idPetition);
+     List<Postulation> findByPetition_IdPetition(Long idPetition);
+
+
 
     
 
 
-    boolean existsByIdPetitionAndIdProvider(Long idPetition, Long idProvider);
+     boolean existsByPetition_IdPetitionAndIdProvider(Long idPetition, Long idProvider);
 
-    @Query("SELECT CASE WHEN p.cost > 0 THEN true ELSE false END FROM Postulation p WHERE p.id = :id")
-    boolean costIsPositive(@Param("id") Long id);
+
+    // @Query("SELECT CASE WHEN p.cost > 0 THEN true ELSE false END FROM Postulation p WHERE p.id = :id")
+    // boolean costIsPositive(@Param("id") Long id);
 
     
     @Modifying
@@ -49,5 +52,10 @@ public interface PostulationRepository extends JpaRepository<Postulation, Long> 
     @Modifying
     @Query("UPDATE Postulation p SET p.current = :current WHERE p.idPostulation = :id")
     void updateCurrentById(@Param("id") Long id, @Param("current") String current);
+
+
+    List<Postulation> findByIdProvider(Long idProvider);
+
+
 
 }

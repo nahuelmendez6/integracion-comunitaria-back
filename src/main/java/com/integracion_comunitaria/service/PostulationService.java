@@ -28,7 +28,7 @@ public class PostulationService {
      * @return Lista de postulaciones.
      */
     public List<Postulation> getByPetition(Long idPetition) {
-        return repository.findByIdPetition(idPetition);
+        return repository.findByPetition_IdPetition(idPetition);
     }
 
     /**
@@ -51,17 +51,22 @@ public class PostulationService {
      */
     public Postulation save(Postulation postulation) {
 
-        boolean exists = repository.existsByIdPetitionAndIdProvider(
-            postulation.getIdPetition(), postulation.getIdProvider()
-        );
+        // boolean exists = repository.existsByIdPetitionAndIdProvider(
+        //     postulation.getIdPetition(), postulation.getIdProvider()
+        // );
 
-        boolean costIsPositive = repository.costIsPositive(postulation.getCost());
+        // boolean costIsPositive = repository.costIsPositive(postulation.getCost());
 
-        if (exists) {
-            throw new IllegalArgumentException("Ya existe una postulacion de este proveedor para esta peticion");
-        } else if (!costIsPositive) {
-            throw new IllegalArgumentException("El costo de la postulacion debe ser positivo");
+        if (postulation.getCost() == null || postulation.getCost() <= 0) {
+            throw new IllegalArgumentException("El costo de la postulación debe ser positivo");
         }
+
+        // if (exists) {
+        //     throw new IllegalArgumentException("Ya existe una postulacion de este proveedor para esta peticion");
+        // }
+        // } else if (!costIsPositive) {
+        //     throw new IllegalArgumentException("El costo de la postulacion debe ser positivo");
+        // }
 
         return repository.save(postulation);
     }
@@ -90,5 +95,10 @@ public class PostulationService {
     public void updateCurrent(Long id, String current) {
         repository.updateCurrentById(id, current);
     }
+
+    public List<Postulation> getByProvider(Long idProvider) {
+        return repository.findByIdProvider(idProvider);
+    }
+    
 
 }

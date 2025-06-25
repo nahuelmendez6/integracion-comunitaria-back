@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -31,8 +33,10 @@ public class Postulation {
     /**
      * ID de la petición a la que se realiza la postulación.
      */
-    @Column(name = "id_petition")
-    private Long idPetition;
+    @ManyToOne
+    @JoinColumn(name = "id_petition", nullable = false)
+    private Petition petition;
+
 
     /**
      * ID del proveedor que realiza la postulación.
@@ -112,12 +116,12 @@ public class Postulation {
         this.idPostulation = idPostulation;
     }
 
-    public Long getIdPetition() {
-        return idPetition;
+    public Petition getPetition() {
+        return petition;
     }
-
-    public void setIdPetition(Long idPetition) {
-        this.idPetition = idPetition;
+    
+    public void setPetition(Petition petition) {
+        this.petition = petition;
     }
 
     public Long getIdProvider() {

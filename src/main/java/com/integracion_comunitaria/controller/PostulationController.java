@@ -108,5 +108,17 @@ public class PostulationController {
         return ResponseEntity.ok("Campo 'current' actualizado.");
     }
 
+    /**
+     * Obtiene todas las postulaciones asociadas a un proveedor específico.
+     *
+     * @param idProvider ID del proveedor.
+     * @return Lista de postulaciones correspondientes.
+     */
+    @GetMapping("/by-provider/{idProvider}")
+    public List<Postulation> getByProvider(@PathVariable Long idProvider) {
+        return postulationService.getByProvider(idProvider);
+    }
+
+
 
 }
